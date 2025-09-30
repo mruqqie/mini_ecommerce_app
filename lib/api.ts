@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const BASE_URL = `https://dummyjson.com/products`;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const useFetch = <T = any>(url: string) => {
 	const [data, setData] = useState<T | null>(null);

@@ -1,4 +1,5 @@
 import { cx, Shape, shapeMap, Size, sizeMap } from "@/lib/utils";
+import { Eye, EyeOff, Loader2, X } from "lucide-react";
 import React, { forwardRef, useState } from "react";
 
 export interface InputProps
@@ -15,33 +16,6 @@ export interface InputProps
 	isLoading?: boolean;
 	fullWidth?: boolean;
 }
-
-const Spinner = ({ size = 16 }: { size?: number }) => (
-	<svg
-		className="animate-spin"
-		width={size}
-		height={size}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		aria-hidden
-	>
-		<circle
-			cx="12"
-			cy="12"
-			r="10"
-			stroke="currentColor"
-			strokeWidth="4"
-			opacity="0.15"
-		/>
-		<path
-			d="M22 12a10 10 0 00-10-10"
-			stroke="currentColor"
-			strokeWidth="4"
-			strokeLinecap="round"
-		/>
-	</svg>
-);
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const {
@@ -140,7 +114,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
 				{isLoading ? (
 					<span className="mr-2">
-						<Spinner size={18} />
+						<Loader2 size={18} />
 					</span>
 				) : null}
 
@@ -151,29 +125,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 						className="mr-2 rounded-full p-1 hover:bg-gray-100 active:scale-95"
 						aria-label="Clear input"
 					>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							aria-hidden
-						>
-							<path
-								d="M18 6L6 18"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-							<path
-								d="M6 6l12 12"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-						</svg>
+						<X  size={16}/>
 					</button>
 				) : null}
 				{showPasswordToggle && type === "password" ? (
@@ -183,62 +135,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 						className="mr-2 rounded-full p-1 hover:bg-gray-100 active:scale-95"
 						aria-label={showPwd ? "Hide password" : "Show password"}
 					>
-						{showPwd ? (
-							<svg
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden
-							>
-								<path
-									d="M3 12s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-								<path
-									d="M9.5 12a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0z"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-						) : (
-							<svg
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden
-							>
-								<path
-									d="M3 3l18 18"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-								<path
-									d="M10.58 10.58a3 3 0 104.24 4.24"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-								<path
-									d="M14.12 14.12C11.9 15.79 8.97 16.5 6 16.5 3 16.5 0 12 0 12s2.8-4.5 6-6"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-						)}
+						{showPwd ? <Eye size={16}/> : <EyeOff size={16} />}
 					</button>
 				) : null}
 				{rightIcon ? (

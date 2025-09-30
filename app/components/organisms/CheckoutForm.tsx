@@ -127,14 +127,14 @@ const CheckoutForm = ({ className }: { className?: string }) => {
 						<Input
 							label="Expiry (MM/YY)"
 							placeholder="MM/YY"
-							type="password"
-							showPasswordToggle
 							{...register("expiry")}
 							error={errors.expiry?.message}
 						/>
 						<Input
 							label="CVC"
 							placeholder="123"
+							type="password"
+							showPasswordToggle
 							{...register("cvc")}
 							error={errors.cvc?.message}
 						/>

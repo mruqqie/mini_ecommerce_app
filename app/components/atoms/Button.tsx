@@ -1,4 +1,5 @@
 import { cx } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 import React, { forwardRef, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "outline" | "danger" | "link";
@@ -45,26 +46,6 @@ const shapeStyles: Record<Shape, string> = {
 
 const base = "inline-flex items-center justify-center gap-2 font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed";
 
-const Spinner = ({ size = 16 }: { size?: number }) => (
-  <svg
-    className="animate-spin"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden
-  >
-    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" opacity="0.15" />
-    <path
-      d="M22 12a10 10 0 00-10-10"
-      stroke="currentColor"
-      strokeWidth="4"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
@@ -105,7 +86,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
         {...(ariaBusy as any)}
         {...(rest as any)}
       >
-        {isLoading ? <Spinner size={18} /> : null}
+        {isLoading ? <Loader2 size={16} /> : null}
         {!isLoading && leftIcon ? <span className="-ml-1">{leftIcon}</span> : null}
         {!isLoading && children}
         {!isLoading && rightIcon ? <span className="-mr-1">{rightIcon}</span> : null}
@@ -123,7 +104,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
     >
       {isLoading ? (
         <span className="flex items-center gap-2">
-          <Spinner size={18} />
+          <Loader2 size={18} />
           <span className="sr-only">Loading</span>
         </span>
       ) : (
@@ -152,7 +133,7 @@ export const IconButton = forwardRef<HTMLButtonElement, Omit<ButtonProps, "child
 
     return (
       <button ref={ref} className={classes} disabled={isLoading} {...rest}>
-        {isLoading ? <Spinner size={16} /> : leftIcon}
+        {isLoading ? <Loader2 size={16} /> : leftIcon}
       </button>
     );
   }

@@ -5,8 +5,10 @@ import { useCart } from "@/context/CartContext";
 const OrderSummary = () => {
 	const { items } = useCart();
 
+	const validItems = items.filter((item) => item.product.stock > 0);
+
 	const getSubtotal = () =>
-		items.reduce(
+		validItems.reduce(
 			(total, item) => total + item.product.price * item.quantity,
 			0
 		);
@@ -20,12 +22,12 @@ const OrderSummary = () => {
 			<h3 className="text-md font-semibold mb-3">Order summary</h3>
 
 			<div className="flex flex-col gap-3 max-h-[48vh] overflow-auto pb-2">
-				{items.length === 0 ? (
+				{validItems.length === 0 ? (
 					<div className="text-gray-500 text-sm">
 						No items in cart
 					</div>
 				) : (
-					items.map((ci) => (
+					validItems.map((ci) => (
 						<div
 							key={ci.product.id}
 							className="flex items-center gap-3"

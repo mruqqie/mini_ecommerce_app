@@ -9,10 +9,12 @@ const CartSummary = () => {
 	const router = useRouter();
 
 	const getSubtotal = () =>
-		items.reduce(
-			(total, item) => total + item.product.price * item.quantity,
-			0
-		);
+		items.reduce((total, item) => {
+			if (item.product.stock > 0) {
+				return total + item.product.price * item.quantity;
+			}
+			return total;
+		}, 0);
 
 	return (
 		<div className="flex flex-col gap-6 w-[100%]">

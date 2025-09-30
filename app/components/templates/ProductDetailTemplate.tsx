@@ -62,21 +62,23 @@ const ProductDetailTemplate = ({ id }: { id: string }) => {
 					</div>
 				</div>
 			</div>
-			<div className="h-max">
-				<CartItem
-					key={product?.id}
-					item={{
-						id: product?.id,
-						name: product?.title,
-						price: product?.price,
-						qty: cartItem ? cartItem.quantity : 0,
-						image: product?.thumbnail,
-						inStock: product?.stock > 0 ? true : false,
-					}}
-					onRemove={() => removeItem(product?.id)}
-					onUpdateQty={handleUpdateQty}
-				/>
-			</div>
+			{product?.stock > 0 && (
+				<div className="h-max">
+					<CartItem
+						key={product?.id}
+						item={{
+							id: product?.id,
+							name: product?.title,
+							price: product?.price,
+							qty: cartItem ? cartItem.quantity : 0,
+							image: product?.thumbnail,
+							inStock: product?.stock > 0 ? true : false,
+						}}
+						onRemove={() => removeItem(product?.id)}
+						onUpdateQty={handleUpdateQty}
+					/>
+				</div>
+			)}
 		</section>
 	);
 };

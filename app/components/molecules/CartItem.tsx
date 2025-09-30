@@ -21,7 +21,10 @@ const CartItem = ({ item, onRemove, onUpdateQty }: CartItemProps) => {
 	const showSkeletonPulse = !imageLoaded || showSkeleton;
 
 	return (
-		<div className="flex gap-4 items-start bg-white rounded-2xl p-3 shadow-sm">
+		<div
+			className={`flex gap-4 items-start bg-white rounded-2xl p-3 shadow-sm transition 
+        ${!item?.inStock ? "opacity-50 grayscale" : ""}`}
+		>
 			<div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 relative">
 				{item?.image ? (
 					<>
@@ -69,7 +72,7 @@ const CartItem = ({ item, onRemove, onUpdateQty }: CartItemProps) => {
 						{item?.inStock ? (
 							<Badge variant="success">Available</Badge>
 						) : (
-							<Badge variant="danger">Out</Badge>
+							<Badge variant="danger">Out of Stock</Badge>
 						)}
 						<div className="mt-2">
 							<Button
@@ -85,10 +88,12 @@ const CartItem = ({ item, onRemove, onUpdateQty }: CartItemProps) => {
 				</div>
 
 				<div className="mt-3 flex flex-wrap gap-2 items-center justify-between">
-					<QuantitySelector
-						value={item?.qty ?? 0}
-						onChange={(v) => onUpdateQty?.(item?.id, v)}
-					/>
+					{item?.inStock && (
+						<QuantitySelector
+							value={item?.qty ?? 0}
+							onChange={(v) => onUpdateQty?.(item?.id, v)}
+						/>
+					)}
 					<div className="text-sm font-medium">
 						Total: ${(item.price * item.qty)?.toLocaleString()}
 					</div>
