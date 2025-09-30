@@ -44,6 +44,14 @@ const CheckoutForm = ({ className }: { className?: string }) => {
 		reset,
 	} = useForm<CheckoutFormData>({
 		resolver: zodResolver(checkoutSchema),
+		defaultValues: {
+			name: "",
+			email: "",
+			address: "",
+			cardNumber: "",
+			expiry: "",
+			cvc: "",
+		},
 	});
 
 	const onSubmit = async () => {
@@ -145,23 +153,15 @@ const CheckoutForm = ({ className }: { className?: string }) => {
 
 						<div className="flex gap-3 mt-2">
 							<Button
-								type="button"
-								variant="secondary"
-								className="flex-1"
-								onClick={() => {
-									reset();
-									setStatus("idle");
-									setErrorMsg(null);
-								}}
-							>
-								Reset
-							</Button>
-							<Button
 								type="submit"
 								variant="primary"
 								className="flex-1"
 								size="lg"
 								isLoading={status === "processing"}
+								disabled={
+									items.length === 0 ||
+									status === "processing"
+								}
 							>
 								{status === "processing"
 									? "Processing..."
