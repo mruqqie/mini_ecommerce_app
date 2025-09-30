@@ -42,12 +42,7 @@ npm run dev
 ```
 Visit http://localhost:3000 in your browser.
 
-## ⚙️ Environment Variables
-```
-NEXT_PUBLIC_API_URL=https://dummyjson.com/products
-```
-
-## 🏗️ Build for Production
+## Build for Production
 ```bash
 npm run build
 npm start
