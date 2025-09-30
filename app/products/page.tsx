@@ -1,4 +1,3 @@
-import { Product } from "@/lib/types";
 import ProductListingTemplate from "../components/templates/ProductListingTemplate";
 
 export const metadata = {

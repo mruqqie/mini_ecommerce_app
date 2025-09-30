@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import ProductFilter from "../molecules/ProductFilter";
 import ProductSort from "../molecules/ProductSort";
 import ProductGrid from "../organisms/ProductGrid";
-import { Product, SortOption } from "@/lib/types";
+import { Product, ProductsResponse, SortOption } from "@/lib/types";
 import useFetch from "@/lib/api";
 import { Loader } from "lucide-react";
 import Pagination from "../molecules/Pagination";
@@ -15,7 +15,7 @@ const ProductListingTemplate = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 12;
 
-	const { data, loading, error } = useFetch("?limit=100000000");
+	const { data, loading, error } = useFetch<ProductsResponse>("?limit=100000000");
 	const products = data?.products as Product[];
 
 	const brands = useMemo(

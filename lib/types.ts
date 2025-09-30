@@ -110,3 +110,7 @@ export type CartAction =
 	| { type: "REMOVE_ITEM"; productId: number }
 	| { type: "UPDATE_QUANTITY"; productId: number; quantity: number }
 	| { type: "CLEAR_CART" };
+
+export interface ProductsResponse {
+	products: Product[];
+}

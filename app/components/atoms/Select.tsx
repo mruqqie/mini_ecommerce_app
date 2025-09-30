@@ -52,7 +52,7 @@ const Select = (props: SelectProps) => {
 		className
 	);
 
-	const currentValue = (rest as any).value ?? options[0]?.value;
+	const currentValue = (rest.value as string | undefined) ?? options[0]?.value;
 	const selected =
 		options.find((o) => o.value === currentValue) ?? options[0];
 

@@ -1,6 +1,6 @@
 # 🛍️ Mini Ecommerce App
 
-A modern e-commerce product listing app built with **Next.js 14**, **TypeScript**, and **TailwindCSS**.  
+A modern e-commerce app built with **Next.js 14**, **TypeScript**, and **TailwindCSS**.  
 Features include product filtering, sorting, pagination, and smooth animations with Framer Motion.
 
 ---

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-const useFetch = <T = any>(url: string) => {
+const useFetch = <T = unknown>(url: string) => {
 	const [data, setData] = useState<T | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -20,8 +20,12 @@ const useFetch = <T = any>(url: string) => {
 				}
 				const json = await res.json();
 				setData(json);
-			} catch (err: any) {
-				setError(err.message);
+			} catch (err: unknown) {
+				if (err instanceof Error) {
+					setError(err.message);
+				} else {
+					setError("An unexpected error occurred");
+				}
 			} finally {
 				setLoading(false);
 			}

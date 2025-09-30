@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 
 export const pacifico = Pacifico({ subsets: ["latin"], weight: "400" });
 
-export const metadata = {
-  title: {
-    default: "MyShop",
-    template: "%s | MyShop",
-  },
-  description: "Shop the best products at MyShop",
-  keywords: ["ecommerce", "shopping", "myshop"],
+export const metadata: Metadata = {
+	title: {
+		default: "MyShop",
+		template: "%s | MyShop",
+	},
+	description: "Shop the best products at MyShop",
+	keywords: ["ecommerce", "shopping", "myshop"],
 };
 
 export default function RootLayout({
